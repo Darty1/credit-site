@@ -15,11 +15,11 @@ from django.views.generic import ListView
 
 
 def index(request: HttpRequest):
-    r = requests.get('http://httpbin.org/status/418')
-    print(r.text)
-    return HttpResponse('<pre>' + r.text + '</pre>')
-    # from .forms import ProductForm
-    # return render(request, 'home.html', {'form': ProductForm()})
+    # r = requests.get('http://httpbin.org/status/418')
+    # print(r.text)
+    # return HttpResponse('<pre>' + r.text + '</pre>')
+    from .forms import ProductForm
+    return render(request, 'home.html', {'form': ProductForm()})
 
 
 def logout(request: HttpRequest):
@@ -62,7 +62,7 @@ class CreateView(View):
         early_repayment = request.POST.get('early_repayment', False)
         if request.POST['early_repayment'] == 'on':
             early_repayment = True
-        from webapp.models import Product
+        from .models import Product
         product = Product(name=name, interest_rate=interest_rate, min_date=min_date, max_date=max_date,
                           sum=sum, early_repayment=early_repayment)
         product.save()

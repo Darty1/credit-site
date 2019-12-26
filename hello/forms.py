@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from django.forms import ModelForm, TextInput, EmailInput, PasswordInput, NumberInput
-from webapp.models import Product
+from .models import Product
 
 
 class UserForm(ModelForm):

@@ -1,4 +1,4 @@
-from django.urls import path, include
+from django.urls import path, include, re_path
 
 from django.contrib import admin
 
@@ -18,4 +18,11 @@ urlpatterns = [
     path("", hello.views.index, name="index"),
     # path("db/", hello.views.db, name="db"),
     path("admin/", admin.site.urls),
+    path('admin/', admin.site.urls),
+    path('', hello.views.index, name='index'),
+    re_path(r'^login/$', hello.views.LoginView.as_view(), name='login'),
+    re_path(r'^register/$', hello.views.RegisterView.as_view(), name='register'),
+    re_path(r'logout/$', hello.views.logout, name='logout'),
+    re_path(r'^create/$', hello.views.CreateView.as_view(), name='create'),
+    re_path(r'^seacrh/$', hello.views.SeacrhView.as_view(), name='search'),
 ]
