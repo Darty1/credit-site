@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container" style="width: 400px">
+<form class="form-horizontal" action='{% url "register" %}' method="post">
+  {% csrf_token %}
+    <fieldset>
+    <div id="legend">
+      <legend align="center">Register</legend>
+    </div>
+        {{ form.as_p }}
+    <div class="control-group">
+      <!-- Button -->
+      <div class="controls">
+        <button type="submit" class="btn btn-primary">Register</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+</div>
+{% endblock %}

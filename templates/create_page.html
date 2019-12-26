@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block title %}New Product{% endblock %}
+
+{% block content %}
+    <div class="container" align="center">
+    <h2 align="center">New Product</h2>
+        <div style="width: 300px;">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input  class="btn btn-primary" type="submit" value="Create">
+            </form>
+        </div>
+    </div>
+{% endblock %}
