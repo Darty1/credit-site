@@ -3,7 +3,7 @@ import os
 import requests
 from django.contrib.auth.models import User
 from django.db.models import Q
-from django.http import HttpRequest, HttpResponse
+from django.http import HttpRequest, HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
 from .models import Product
 
@@ -15,9 +15,6 @@ from django.views.generic import ListView
 
 
 def index(request: HttpRequest):
-    # r = requests.get('http://httpbin.org/status/418')
-    # print(r.text)
-    # return HttpResponse('<pre>' + r.text + '</pre>')
     from .forms import ProductForm
     return render(request, 'home.html', {'form': ProductForm()})
 
@@ -26,6 +23,17 @@ def logout(request: HttpRequest):
     from django.contrib.auth import logout
     logout(request)
     return redirect(reverse('index'))
+
+
+class ShowProduct(View):
+    def get(self, request, product_id):
+        from django.db.models import ObjectDoesNotExist
+        try:
+            product = Product.objects.get(pk=product_id)
+        except ObjectDoesNotExist:
+            return HttpResponseNotFound
+        return render(request, 'product.html',
+                      {'product': product})
 
 
 class SeacrhView(ListView):

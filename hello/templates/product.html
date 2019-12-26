@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% block content %}
+<h1>Product</h1>
+<div id="app">
+  {{ message }}
+</div>
+{% endblock %}
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Привет, Vue!'
+  }
+})
