@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+    <div class="container" align="center">
+    <h2 align="center">Seacrh Credit</h2>
+        <div style="width: 300px;">
+            <form method="get" action="{% url 'search'  %}">
+                {% csrf_token %}
+                <div class="form-group">
+                     <label for="input-count">Min date</label>
+                    {{ form.min_date }}
+                </div>
+                <div class="form-group">
+                     <label for="input-count">Max date</label>
+                    {{ form.max_date }}
+                </div>
+                <div class="form-group">
+                     <label for="input-count">Sum</label>
+                    {{ form.sum }}
+                </div>
+                <div class="form-group">
+                     <label for="input-count">Early repayment</label>
+                    {{ form.early_repayment }}
+                </div>
+                <input  class="btn btn-primary" type="submit" value="Search">
+            </form>
+        </div>
+    </div>
+{% endblock %}

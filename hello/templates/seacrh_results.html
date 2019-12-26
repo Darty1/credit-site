@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% block content %}
+<h1>Search Results</h1>
+
+<ul>
+  {% for pr in object_list %}
+    <li>
+    <a href="product/{{ pr.id }}">{{ pr.name }}</a>
+     <p>min date: {{ pr.min_date }}</p>
+     <p>max date: {{ pr.max_date }}</p>
+     <p>sum: {{ pr.sum }}</p>
+     <p>ER: {{ pr.early_repayment }}</p>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}
