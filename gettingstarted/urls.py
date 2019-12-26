@@ -16,9 +16,8 @@ import hello.views
 
 urlpatterns = [
     path("", hello.views.index, name="index"),
-    path("db/", hello.views.db, name="db"),
+    # path("db/", hello.views.db, name="db"),
     path("admin/", admin.site.urls),
-    path('admin/', admin.site.urls),
     path('', hello.views.index, name='index'),
     re_path(r'^login/$', hello.views.LoginView.as_view(), name='login'),
     re_path(r'^register/$', hello.views.RegisterView.as_view(), name='register'),
