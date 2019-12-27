@@ -30,10 +30,12 @@ class ShowProduct(View):
         from django.db.models import ObjectDoesNotExist
         try:
             product = Product.objects.get(pk=product_id)
+            payment = product.sum*((product.interest_rate / 100 / 12) * (1 + (product.interest_rate / 100 / 12)) ** product.max_date / ((1 + product.interest_rate / 100 / 12) ** product.max_date - 1))
+
         except ObjectDoesNotExist:
             return HttpResponseNotFound
         return render(request, 'product.html',
-                      {'product': product})
+                      {'product': product, 'payment': payment})
 
 
 class SeacrhView(ListView):
