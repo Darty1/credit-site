@@ -3,7 +3,13 @@
 <h1>Search Results</h1>
     {%  verbatim %}
     <div class="container" id="search_products">
-
+        <div class="btn btn-success btn-lg" v-for="pr in products">
+             <a href="/product/{{ pr.id }}">{{ pr.name }}</a>
+             <p>min date: {{ pr.min_date }}</p>
+             <p>max date: {{ pr.max_date }}</p>
+            <p>sum: {{ pr.sum }}</p>
+            <p>ER: {{ pr.early_repayment }}</p>
+        </div>
     </div>
     {% endverbatim %}
 <ul>
@@ -17,5 +23,22 @@
     </li>
   {% endfor %}
 </ul>
-    <script src="/static/search_results.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        new Vue(
+    {
+        el: '#search_products',
+        data: {
+            products: []
+        },
+        created: function () {
+            const vm=this;
+            axios.get('/search/')
+            .then(function (response) {
+                vm.products = response.data
+            })
+        }
+    })
+</script>
 {% endblock %}
