@@ -1,7 +1,11 @@
 {% extends 'index.html' %}
 {% block content %}
 <h1>Search Results</h1>
+    {%  verbatim %}
+    <div class="container" id="search_products">
 
+    </div>
+    {% endverbatim %}
 <ul>
   {% for pr in object_list %}
     <li>
@@ -13,4 +17,5 @@
     </li>
   {% endfor %}
 </ul>
+    <script src="/static/search_results.js"></script>
 {% endblock %}
