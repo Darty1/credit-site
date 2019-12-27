@@ -24,4 +24,5 @@ urlpatterns = [
     re_path(r'logout/$', hello.views.logout, name='logout'),
     re_path(r'^create/$', hello.views.CreateView.as_view(), name='create'),
     re_path(r'^seacrh/$', hello.views.SeacrhView.as_view(), name='search'),
+    re_path(r'^product/(?P<product_id>\d+)/$', hello.views.ShowProduct.as_view(), name='product'),
 ]
