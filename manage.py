@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-<<<<<<< HEAD
 import os
 import sys
 
@@ -9,7 +8,6 @@ if __name__ == "__main__":
     from django.core.management import execute_from_command_line
 
     execute_from_command_line(sys.argv)
-=======
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
@@ -30,4 +28,3 @@ def main():
 
 if __name__ == '__main__':
     main()
->>>>>>> d275beab5eb0e7b7bdcb3785b78e501502f715f3
