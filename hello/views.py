@@ -28,6 +28,7 @@ def logout(request: HttpRequest):
 class ShowProduct(View):
     def get(self, request, product_id):
         from django.db.models import ObjectDoesNotExist
+        print(product_id)
         try:
             product = Product.objects.get(pk=product_id)
             payment = product.sum*((product.interest_rate / 100 / 12) * (1 + (product.interest_rate / 100 / 12)) ** product.max_date / ((1 + product.interest_rate / 100 / 12) ** product.max_date - 1))
