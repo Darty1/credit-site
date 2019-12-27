@@ -28,15 +28,23 @@ def logout(request: HttpRequest):
 class ShowProduct(View):
     def get(self, request, product_id):
         from django.db.models import ObjectDoesNotExist
-        print(product_id)
         try:
             product = Product.objects.get(pk=product_id)
-            payment = product.sum*((product.interest_rate / 100 / 12) * (1 + (product.interest_rate / 100 / 12)) ** product.max_date / ((1 + product.interest_rate / 100 / 12) ** product.max_date - 1))
-
+            payment = round(product.sum*((product.interest_rate / 100 / 12) * (1 + (product.interest_rate / 100 / 12)) ** product.max_date / ((1 + product.interest_rate / 100 / 12) ** product.max_date - 1)), 2)
+            sum = product.sum
+            procent = []
+            body = []
+            number = []
+            for i in range(product.max_date):
+                procent.append(round(sum*product.interest_rate/100/12, 2))
+                body.append(round(payment-procent[i], 2))
+                sum = sum - body[i]
+                number.append(i+1)
+            table = zip(number, procent, body)
         except ObjectDoesNotExist:
             return HttpResponseNotFound
         return render(request, 'product.html',
-                      {'product': product, 'payment': payment})
+                      {'product': product, 'payment': payment, 'table': table})
 
 
 class SeacrhView(ListView):

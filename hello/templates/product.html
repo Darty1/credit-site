@@ -1,12 +1,32 @@
 {% extends 'index.html' %}
 {% block content %}
+     <div class="container">
 <h1>Product</h1>
     <li>
     <p>{{ product.name }}</p>
          <p>max date: {{ product.max_date }}</p>
-         <p>sum: {{ pr.sum }}</p>
+         <p>sum: {{ product.sum }}</p>
          <p>payment: {{ payment }}</p>
     </li>
 </ul>
-<h2>payment : {{ payment }}</h2>
+
+    <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Procent</th>
+      <th scope="col">Body</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for n, p, b in table %}
+        <tr>
+        <td>{{ n }}</td>
+        <td>{{ p }}</td>
+        <td>{{ b }}</td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
 {% endblock %}
