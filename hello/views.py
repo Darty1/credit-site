@@ -78,7 +78,7 @@ class CreateView(View):
         min_date = request.POST['min_date']
         max_date = request.POST['max_date']
         sum = request.POST['sum']
-        early_repayment = request.POST['early_repayment', False]
+        early_repayment = False
         if request.POST['early_repayment'] == 'on':
             early_repayment = True
         from .models import Product
