@@ -1,5 +1,13 @@
 {% extends 'index.html' %}
 {% block content %}
 <h1>Product</h1>
+    <li>
+    <p {{ product.name }}</p>
+     <p>min date: {{ pr.min_date }}</p>
+     <p>max date: {{ pr.max_date }}</p>
+     <p>sum: {{ pr.sum }}</p>
+     <p>ER: {{ pr.early_repayment }}</p>
+    </li>
+</ul>
 <h2>payment : {{ payment }}</h2>
 {% endblock %}
